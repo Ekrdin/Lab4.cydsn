@@ -15,15 +15,30 @@
 #include "semphr.h"
 #include "params.h"
 #include "queue.h"
+
+
+void ReverseRedLedState()
+{
+    
+    Cy_GPIO_Write(RED_PORT,RED_NUM,1);
+    CyDelay(500);
+    Cy_GPIO_Write(RED_PORT,RED_NUM,0);
+    CyDelay(500);
+
+}
 int main(void)
 {
     __enable_irq(); /* Enable global interrupts. */
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-
+    
+    
     for(;;)
     {
-        1/* Place your application code here. */
+        /* Place your application code here. */
+        
+     ReverseRedLedState();
+     vTaskDelay(pdMS_TO_TICKS(500));
     }
 }
 
