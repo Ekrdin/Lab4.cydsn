@@ -23,7 +23,7 @@ int main(void)
 
     for(;;)
     {
-        /* Place your application code here. */
+        1/* Place your application code here. */
     }
 }
 
