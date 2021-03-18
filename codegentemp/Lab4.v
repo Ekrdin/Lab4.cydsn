@@ -1,6 +1,6 @@
 // ======================================================================
 // Lab4.v generated from TopDesign.cysch
-// 03/10/2021 at 16:26
+// 03/18/2021 at 15:31
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -119,7 +119,7 @@ module top ;
 		  .width(1),
 		  .sio_grp_cnt(0),
 		  .drive_mode("6"),
-		  .ibuf_enabled("0"),
+		  .ibuf_enabled("1"),
 		  .init_dr_st("0"),
 		  .input_sync("0"),
 		  .intr_mode("0"),
@@ -133,7 +133,7 @@ module top ;
 		  .i2c_mode("0"),
 		  .output_current_cap("8"),
 		  .pin_aliases(""),
-		  .pin_mode("O"),
+		  .pin_mode("IO"),
 		  .slew_rate("0"),
 		  .vtrip("0"),
 		  .use_annotation("0"),

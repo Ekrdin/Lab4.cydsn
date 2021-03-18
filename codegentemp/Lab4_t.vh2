@@ -1,10 +1,10 @@
 -- Project:   C:\Users\user\Documents\PSoC Creator\Laboratoire4\Lab4.cydsn\Lab4.cyprj
--- Generated: 03/10/2021 16:26:27
+-- Generated: 03/18/2021 15:32:15
 -- PSoC Creator  4.4
 
 ENTITY Lab4 IS
     PORT(
-        RED(0)_PAD : OUT std_ulogic);
+        RED(0)_PAD : INOUT std_ulogic);
     ATTRIBUTE voltage_VBACKUP OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDD_NS OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDA_CSD OF __DEFAULT__ : ENTITY IS 3.3e0;
@@ -529,7 +529,7 @@ BEGIN
             drive_strength => "0",
             hotswap_needed => "0",
             i2c_mode => "0",
-            ibuf_enabled => "0",
+            ibuf_enabled => "1",
             id => "a61270bc-07ec-447d-ac9e-34cfe85c30e9",
             init_dr_st => "0",
             input_sync => "0",

@@ -2,7 +2,7 @@
 --	Conversion of Lab4.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Mar 10 16:26:05 2021
+--	Thu Mar 18 15:31:34 2021
 --
 
 USE cypress.cypress.all;
@@ -29,7 +29,7 @@ RED:cy_mxs40_gpio_v1_0
 		sio_grp_cnt=>0,
 		id=>"a61270bc-07ec-447d-ac9e-34cfe85c30e9",
 		drive_mode=>"6",
-		ibuf_enabled=>"0",
+		ibuf_enabled=>"1",
 		init_dr_st=>"0",
 		input_sync=>"0",
 		intr_mode=>"0",
@@ -43,7 +43,7 @@ RED:cy_mxs40_gpio_v1_0
 		output_current_cap=>"8",
 		i2c_mode=>"0",
 		pin_aliases=>"",
-		pin_mode=>"O",
+		pin_mode=>"IO",
 		slew_rate=>"0",
 		vtrip=>"0",
 		use_annotation=>"0",

@@ -17,14 +17,12 @@
 #include "queue.h"
 
 
-void ReverseRedLedState()
+void TaskRedLedState()
 {
-    
-    Cy_GPIO_Write(RED_PORT,RED_NUM,1);
-    CyDelay(500);
-    Cy_GPIO_Write(RED_PORT,RED_NUM,0);
-    CyDelay(500);
-
+   for(;;) {
+    Cy_GPIO_Write(RED_PORT, RED_NUM, !Cy_GPIO_Read(RED_PORT,RED_NUM));
+    vTaskDelay(pdMS_TO_TICKS(500));
+}
 }
 int main(void)
 {
@@ -32,13 +30,15 @@ int main(void)
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     
+    xTaskCreate(TaskRedLedState,"Tache de clignotement",200, NULL,0,NULL);
+    
+    vTaskStartScheduler();
     
     for(;;)
     {
         /* Place your application code here. */
         
-     ReverseRedLedState();
-     vTaskDelay(pdMS_TO_TICKS(500));
+
     }
 }
 
