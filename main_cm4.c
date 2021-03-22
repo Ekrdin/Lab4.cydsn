@@ -21,6 +21,15 @@
 SemaphoreHandle_t Semaphore ;
 bool isPressed = false;
 
+task_params_t task_A = {
+    .delay = 1000,
+    .message = "Tache A en cours \n\r"
+};
+
+task_params_t task_B = {
+    .delay = 999,
+    .message = "Tache B en cours \n\r"
+};
 
 void TaskRedLedState(){
    for(;;) {
@@ -35,6 +44,7 @@ void isr_bouton(void){
 
     CyDelay(20);
     
+   
     
     isPressed = !isPressed; //on inverse l'etat du bouton
     Cy_GPIO_ClearInterrupt(Bouton_0_PORT, Bouton_0_NUM);
@@ -60,7 +70,13 @@ void bouton_task(){
     }
 }
 
-
+void print_loop(void *params){
+    for (;;){
+    task_params_t* tache = (task_params_t*) params;
+    UART_PutString(tache->message);
+    
+     }   
+}
 
 
 int main(void)
@@ -76,8 +92,11 @@ int main(void)
     NVIC_ClearPendingIRQ(Bouton_ISR_cfg.intrSrc);
     NVIC_EnableIRQ(Bouton_ISR_cfg.intrSrc);
     
-    xTaskCreate(TaskRedLedState,"Tache de clignotement",200, NULL,1,NULL);
-    xTaskCreate(bouton_task,"Bouton",1000,NULL,1,NULL);
+    xTaskCreate(TaskRedLedState,"Tache de clignotement",200, NULL,0,NULL);
+    xTaskCreate(bouton_task,"Bouton",1000,NULL,0,NULL);
+    xTaskCreate(print_loop, "task A", configMINIMAL_STACK_SIZE, (void *) &task_A, 1, NULL);
+    xTaskCreate(print_loop, "task B", configMINIMAL_STACK_SIZE, (void *) &task_B, 1, NULL);
+    
     vTaskStartScheduler();
     
     
